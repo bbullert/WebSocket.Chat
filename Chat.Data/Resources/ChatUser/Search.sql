@@ -1,0 +1,23 @@
+--DECLARE @Id INT = NULL
+--DECLARE @ChatId INT = NULL
+--DECLARE @UserId INT = NULL
+
+--DECLARE @Page INT = 1
+--DECLARE @PageSize INT = 10
+--DECLARE @SortBy NVARCHAR(MAX) = NULL
+
+--SELECT 
+--    [Id]
+--	,[ChatId]
+--	,[UserId]
+--	,COUNT(*) OVER() TotalRows
+--FROM 
+--    [employee].[Employee] (NOLOCK)
+--WHERE
+--    ( @Id IS NULL OR [Id] = @Id ) AND 
+--    ( @ChatId IS NULL OR [ChatId] = @ChatId ) AND 
+--    ( @UserId IS NULL OR [UserId] = @UserId  )
+--ORDER BY 
+--	@SortBy
+--OFFSET ( @Page - 1 ) * @PageSize ROWS
+--FETCH NEXT @PageSize ROWS ONLY

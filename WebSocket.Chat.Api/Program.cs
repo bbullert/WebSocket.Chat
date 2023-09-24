@@ -1,3 +1,5 @@
+using Chat.Api.Extnesions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.RegisterServices();
+builder.Services.RegisterRepositries();
+builder.Services.RegisterValidators();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -14,6 +20,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseCors(builder => builder
+        .WithOrigins("http://localhost:5000", "https://localhost:5001")
+        .WithOrigins("http://localhost:8080", "https://localhost:8080")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 }
 
 app.UseHttpsRedirection();
