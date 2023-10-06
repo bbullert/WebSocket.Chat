@@ -74,7 +74,7 @@ namespace Chat.Data.Resources.ChatMessage {
         ///ON UU.[Id] = CM.[UserId]
         ///WHERE CM.[ChatId] = @ChatId
         ///ORDER BY 
-        ///	[CreateDate]
+        ///	[CreateDate] DESC
         ///OFFSET @Offset ROWS
         ///FETCH NEXT @Count ROWS ONLY
         ///.

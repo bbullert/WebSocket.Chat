@@ -15,4 +15,10 @@
     <ProjectReference Include="..\Chat.Data\Chat.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="WebSocketLib">
+      <HintPath>..\..\WebSocketLib\WebSocketLib\bin\Debug\net7.0\WebSocketLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

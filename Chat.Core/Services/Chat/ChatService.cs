@@ -14,19 +14,19 @@ namespace Chat.Core.Services
             _chatRepository = chatRepository;
         }
 
-        public async Task<Core.Dto.Chat> GetAsync(int id)
+        public async Task<Dto.Chat> GetAsync(int id)
         {
             var result = await _chatRepository.GetAsync(id);
             if (result == null) return null;
-            var user = Core.Dto.Chat.FromEntity(result);
+            var user = Dto.Chat.FromEntity(result);
 
             return user;
         }
 
-        public async Task<IEnumerable<Core.Dto.Chat>> GetAllAsync()
+        public async Task<IEnumerable<Dto.Chat>> GetAllAsync()
         {
             var result = await _chatRepository.GetAllAsync();
-            var users = result.Select(x => Core.Dto.Chat.FromEntity(x)).ToList();
+            var users = result.Select(x => Dto.Chat.FromEntity(x)).ToList();
 
             return users;
         }

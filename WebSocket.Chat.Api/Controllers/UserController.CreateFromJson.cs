@@ -1,24 +1,21 @@
-﻿using Chat.Api.Extnesions;
-using Chat.Core.Dto;
-using Chat.Core.Exceptions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Api.Controllers
 {
     public partial class UserController
     {
         [HttpPost("users/json")]
-        //[ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status201Created)]
-        //[ProducesResponseType(typeof(ApiResponse<ValidationResult>), StatusCodes.Status422UnprocessableEntity)]
-        //[ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateFromJsonAsync(IFormFile? file)
         {
             try
             {
                 var result = await _userService.CreateFromJsonAsync(file);
-                return Ok(result);
+                return Created(result);
             }
-            catch (HttpResponseException ex)
+            catch (HttpRequestException ex)
             {
                 return Error(ex);
             }

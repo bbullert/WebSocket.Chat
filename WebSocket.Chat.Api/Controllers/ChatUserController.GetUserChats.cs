@@ -1,5 +1,4 @@
-﻿using Chat.Core.Exceptions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Api.Controllers
 {
@@ -15,7 +14,7 @@ namespace Chat.Api.Controllers
                 var result = await _chatUserService.GetUserChatsAsync(userId);
                 return Ok(result);
             }
-            catch (HttpResponseException ex)
+            catch (HttpRequestException ex)
             {
                 return Error(ex);
             }

@@ -10,11 +10,19 @@
     <PackageReference Include="Dapper" Version="2.0.151" />
     <PackageReference Include="FluentValidation" Version="11.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="System.Net.WebSockets" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Chat.Core\Chat.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WebSocketLib">
+      <HintPath>..\..\WebSocketLib\WebSocketLib\bin\Debug\net7.0\WebSocketLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

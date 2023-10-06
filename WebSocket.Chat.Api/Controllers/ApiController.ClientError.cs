@@ -1,5 +1,4 @@
 ﻿using Chat.Api.Models;
-using Chat.Core.Exceptions;
 using Chat.Core.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -9,17 +8,6 @@ namespace Chat.Api.Controllers
 {
     public partial class ApiController : ControllerBase
     {
-        protected virtual ObjectResult Error(HttpResponseException ex)
-        {
-            var response = new ApiResponse<object>()
-            {
-                Status = (int)ex.StatusCode,
-                Details = ex.Message
-            };
-
-            return StatusCode(response.Status, response);
-        }
-
         protected virtual ObjectResult Error(HttpRequestException ex)
         {
             var response = new ApiResponse<object>()

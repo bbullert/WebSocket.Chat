@@ -1,5 +1,4 @@
-﻿using Chat.Core.Exceptions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Api.Controllers
 {

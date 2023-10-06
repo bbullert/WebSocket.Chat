@@ -1,4 +1,3 @@
-using Chat.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Api.Controllers

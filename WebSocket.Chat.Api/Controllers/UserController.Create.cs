@@ -1,7 +1,5 @@
 ﻿using Chat.Api.Extnesions;
-using Chat.Api.Models;
 using Chat.Core.Dto;
-using Chat.Core.Validators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Api.Controllers
@@ -9,9 +7,9 @@ namespace Chat.Api.Controllers
     public partial class UserController
     {
         [HttpPost("users")]
-        [ProducesResponseType(typeof(ApiResponse<int>), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ApiResponse<ValidationResult>), StatusCodes.Status422UnprocessableEntity)]
-        [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateAsync([FromBody] UserCreate model)
         {
             try

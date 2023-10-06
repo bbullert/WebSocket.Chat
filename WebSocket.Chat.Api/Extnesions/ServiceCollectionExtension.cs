@@ -1,4 +1,5 @@
 ﻿using Chat.Core.Dto;
+using Chat.Core.Hubs;
 using Chat.Core.Services;
 using Chat.Core.Validators;
 using Chat.Data.Repositories;
@@ -15,6 +16,8 @@ namespace Chat.Api.Extnesions
             services.AddScoped<IChatUserService, ChatUserService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IChatMessageService, ChatMessageService>();
+
+            services.AddTransient<ChatHub>();
         }
 
         public static void RegisterRepositries(this IServiceCollection services)

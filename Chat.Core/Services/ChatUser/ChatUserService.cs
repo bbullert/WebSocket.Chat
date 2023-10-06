@@ -18,7 +18,7 @@ namespace Chat.Core.Services
         {
             var result = await _chatUserRepository.GetAsync(chatId, userId);
             if (result is null) return null;
-            var user = Core.Dto.ChatUser.FromEntity(result);
+            var user = ChatUser.FromEntity(result);
 
             return user;
         }
@@ -26,7 +26,7 @@ namespace Chat.Core.Services
         public async Task<IEnumerable<ChatUser>> GetAllAsync()
         {
             var result = await _chatUserRepository.GetAllAsync();
-            var users = result.Select(x => Core.Dto.ChatUser.FromEntity(x)).ToList();
+            var users = result.Select(x => ChatUser.FromEntity(x)).ToList();
 
             return users;
         }
@@ -42,7 +42,7 @@ namespace Chat.Core.Services
         public async Task<IEnumerable<User>> GetChatUsersAsync(int chatId)
         {
             var result = await _chatUserRepository.GetChatUsersAsync(chatId);
-            var users = result.Select(x => Core.Dto.User.FromEntity(x)).ToList();
+            var users = result.Select(x => User.FromEntity(x)).ToList();
 
             return users;
         }

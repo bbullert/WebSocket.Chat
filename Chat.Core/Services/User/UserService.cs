@@ -1,8 +1,6 @@
 ﻿using Chat.Core.Dto;
-using Chat.Core.Exceptions;
 using Chat.Data.Repositories;
 using Microsoft.AspNetCore.Http;
-using System.Net;
 using System.Text;
 using System.Text.Json;
 
@@ -46,15 +44,21 @@ namespace Chat.Core.Services
         {
             if (file == null)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest, "File is required");
+                throw new HttpRequestException(
+                    "File is required",
+                    null, System.Net.HttpStatusCode.BadRequest);
             }
             if (file.Length == 0)
             {
-                throw new HttpResponseException(HttpStatusCode.UnprocessableEntity, "File is empty");
+                throw new HttpRequestException(
+                    "File is empty",
+                    null, System.Net.HttpStatusCode.UnprocessableEntity);
             }
             if (file.ContentType != "application/json")
             {
-                throw new HttpResponseException(HttpStatusCode.UnprocessableEntity, "Invalid file type. Json type required");
+                throw new HttpRequestException(
+                    "Invalid file type - Json type required",
+                    null, System.Net.HttpStatusCode.UnprocessableEntity);
             }
 
             var content = new StringBuilder();

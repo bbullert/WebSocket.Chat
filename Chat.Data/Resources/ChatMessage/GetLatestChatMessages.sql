@@ -11,6 +11,6 @@ INNER JOIN [user].[User] UU (NOLOCK)
 ON UU.[Id] = CM.[UserId]
 WHERE CM.[ChatId] = @ChatId
 ORDER BY 
-	[CreateDate]
+	[CreateDate] DESC
 OFFSET @Offset ROWS
 FETCH NEXT @Count ROWS ONLY

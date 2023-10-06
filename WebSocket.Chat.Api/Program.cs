@@ -1,4 +1,6 @@
 using Chat.Api.Extnesions;
+using Chat.Core.Hubs;
+using WebSocketLib;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterServices();
 builder.Services.RegisterRepositries();
 builder.Services.RegisterValidators();
+builder.Services.AddWebSocketDependencies();
+
+//builder.Services.AddTransient<ChatHub>();
 
 var app = builder.Build();
 
@@ -28,6 +33,14 @@ if (app.Environment.IsDevelopment())
         .AllowAnyHeader()
         .AllowCredentials());
 }
+
+var webSocketOptions = new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(2)
+};
+app.UseWebSockets(webSocketOptions);
+
+app.MapWebSocketHub<ChatHub>("/chat");
 
 app.UseHttpsRedirection();
 
